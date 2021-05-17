@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
+    <PackageReference Include="Prism.Unity.Forms" Version="7.1.0.431" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Flurl.Http" Version="2.4.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Firebase.Core" Version="60.1142.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\RadioPage.xaml.cs">
+      <DependentUpon>RadioPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\persona.svg" />
+    <EmbeddedResource Include="Resources\bcksmall.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Controls\" />
+    <Folder Include="Views\views\" />
+    <Folder Include="Services\" />
+    <Folder Include="Events\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\persona.svg" />
+    <None Remove="Resources\bcksmall.svg" />
+  </ItemGroup>
+</Project>

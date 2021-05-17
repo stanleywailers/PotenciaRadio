@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">PotenciaRadio.Droid</string>
+    <string name="com.crashlytics.android.build_id">build_id</string>
+</resources>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        x:Class="PotenciaRadio.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Application resource dictionary -->
+
+            <Color x:Key="OrangeColor">#eb7020</Color>
+            <Color x:Key="DarkColor">#462945</Color>
+            <Color x:Key="LigthColor">#f7f5f6</Color>
+
+
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor"
+                        Value="#f7f5f6" />
+                <Setter Property="BarTextColor"
+                        Value="#eb7020" />
+            </Style>
+
+
+            <!-- Development Keys    -->
+            <x:String x:Key="api_url">http://206.189.172.127/api</x:String>
+
+            <x:String x:Key="notification_text">Estas Escuhando Potencia Online</x:String>
+
+            <!-- addMob Ids    -->
+            <x:String x:Key="AddMobAndroidID">ca-app-pub-8582719280960685~5235635722</x:String>
+            <x:String x:Key="AddMobiOSID">ca-app-pub-8582719280960685~4855912062</x:String>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

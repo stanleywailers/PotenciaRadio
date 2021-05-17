@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "727291405903",
+    "firebase_url": "https://potenciaradio-b1cad.firebaseio.com",
+    "project_id": "potenciaradio-b1cad",
+    "storage_bucket": "potenciaradio-b1cad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727291405903:android:b5d525fb93a98e3f",
+        "android_client_info": {
+          "package_name": "com.devstroyers.Potencia.Radio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727291405903-f5dnp3qmeughfn1hc36rmcchkk3mt2sa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf0LStm47v1HLHIfX6yZul9bSJ-mOBFZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727291405903-om3slk3rq59j9rdnoaln2ng5qet1mjsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
