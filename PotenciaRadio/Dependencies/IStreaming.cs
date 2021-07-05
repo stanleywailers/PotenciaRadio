@@ -9,6 +9,5 @@ namespace PotenciaRadio.Dependencies
         void Play();
         void Pause();
         void Stop();
-        double SetVolume(double value);
     }
 }

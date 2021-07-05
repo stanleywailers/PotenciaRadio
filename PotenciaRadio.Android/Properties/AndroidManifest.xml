@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="11" android:theme="@style/Theme.AppCompat" android:versionName="1.0.10" package="com.devstroyers.Potencia.Radio">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="11" android:theme="@style/Theme.AppCompat" android:versionName="1.0.10" package="com.devstroyers.Potencia.Radio" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-	<application android:label="PotenciaRadio" android:allowBackup="false" android:icon="@mipmap/ic_launcher">
-		<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-			  android:theme="@android:style/Theme.Translucent" />
+	<application android:label="PotenciaRadio" android:allowBackup="false" android:largeHeap="true" android:icon="@mipmap/ic_launcher">
+		<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
@@ -17,5 +16,4 @@
 			</intent-filter>
 		</receiver>
 	</application>
-	
 </manifest>

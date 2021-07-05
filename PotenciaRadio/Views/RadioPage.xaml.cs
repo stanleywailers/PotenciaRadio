@@ -16,10 +16,7 @@ namespace PotenciaRadio.Views
             InitializeComponent();
         }
 
-        private void Slider_ValueChanged(object sender, Xamarin.Forms.ValueChangedEventArgs e)
-        {
-            (BindingContext as RadioPageViewModel).SetVolume(e.NewValue);
-        }
+
 
 
     }

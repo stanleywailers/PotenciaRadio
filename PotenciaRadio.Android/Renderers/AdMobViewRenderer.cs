@@ -11,38 +11,38 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(AdMobView), typeof(AdMobViewRenderer))]
 namespace PotenciaRadio.Droid.Renderers
 {
-	public class AdMobViewRenderer : ViewRenderer<AdMobView, AdView>
-	{
-		public AdMobViewRenderer(Context context) : base(context) { }
+    public class AdMobViewRenderer : ViewRenderer<AdMobView, AdView>
+    {
+        public AdMobViewRenderer(Context context) : base(context) { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<AdMobView> e)
         {
-            base.OnElementChanged(e);
-            if (e.NewElement != null && Control == null)
-                SetNativeControl(CreateAdView());
+            //base.OnElementChanged(e);
+            //if (e.NewElement != null && Control == null)
+            //    SetNativeControl(CreateAdView());
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			base.OnElementPropertyChanged(sender, e);
+        {
+            //base.OnElementPropertyChanged(sender, e);
 
-			if (e.PropertyName == nameof(AdView.AdUnitId))
-				Control.AdUnitId = Element.AdUnitId;
-		}
+            //if (e.PropertyName == nameof(AdView.AdUnitId))
+            //	Control.AdUnitId = Element.AdUnitId;
+        }
 
-		private AdView CreateAdView()
-		{
-			var adView = new AdView(Context)
-			{
-				AdSize = AdSize.SmartBanner,
-				AdUnitId = Element.AdUnitId
-			};
+        //private AdView CreateAdView()
+        //{
+        //	var adView = new AdView(Context)
+        //	{
+        //		AdSize = AdSize.SmartBanner,
+        //		AdUnitId = Element.AdUnitId
+        //	};
 
-			adView.LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
+        //	adView.LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
 
-			adView.LoadAd(new AdRequest.Builder().Build());
+        //	adView.LoadAd(new AdRequest.Builder().Build());
 
-			return adView;
-		}
-	}
+        //	return adView;
+        //}
+    }
 }

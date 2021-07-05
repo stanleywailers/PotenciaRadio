@@ -6,7 +6,6 @@ using PotenciaRadio.Droid.Dependencies;
 using Prism;
 using Prism.Ioc;
 using Xamarin.Forms.Platform.Android;
-using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
 using Android.Gms.Common;
@@ -23,12 +22,12 @@ namespace PotenciaRadio.Droid
     [Activity(Label = "PotenciaRadio", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        
+
         static readonly string TAG = "MainActivity";
 
         internal static readonly string CHANNEL_ID = "my_notification_channel";
         internal static readonly int NOTIFICATION_ID = 100;
-        MyFirebaseIIDService myFirebaseIIDService = new MyFirebaseIIDService();
+        // MyFirebaseIIDService myFirebaseIIDService = new MyFirebaseIIDService();
         Intent serviceStreamPlayer;
 
         protected override void OnCreate(Bundle bundle)
@@ -36,22 +35,21 @@ namespace PotenciaRadio.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            serviceStreamPlayer = new Intent(Application.Context, typeof(DroidStreamingService));
+            serviceStreamPlayer = new Intent(this, typeof(DroidStreamingService));
 
-            
+
             base.OnCreate(bundle);
 
 
             Xamarin.Essentials.Platform.Init(this, bundle);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             IsPlayServicesAvailable();
-            Android.Gms.Ads.MobileAds.Initialize(this, "ca-app-pub-8582719280960685/3307949149");
-            Fabric.Fabric.With(this, new Crashlytics.Crashlytics());
+            // Android.Gms.Ads.MobileAds.Initialize(this);
 
             CreateNotificationChannel();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-           
+
             LoadApplication(new App(new AndroidInitializer()));
             LoadService().ConfigureAwait(false);
         }
@@ -121,10 +119,9 @@ namespace PotenciaRadio.Droid
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
-            var application = new App(new AndroidInitializer());
-            application.Container.Resolve<IEventAggregator>().GetEvent<StopEvent>().Publish();
-            StopService(serviceStreamPlayer);
+           StopService(serviceStreamPlayer);
+           base.OnDestroy();
+
         }
     }
 

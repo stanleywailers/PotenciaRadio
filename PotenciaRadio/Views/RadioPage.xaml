@@ -1,92 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PotenciaRadio.Views.RadioPage"
-             xmlns:converters="clr-namespace:PotenciaRadio.Views.Converters"
-             xmlns:controls="clr-namespace:PotenciaRadio.Views.Controls"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:views="clr-namespace:PotenciaRadio.Views.views">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:InverseBoolConverter x:Key="inverseBoolConverter" />
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="PotenciaRadio.Views.RadioPage"
+			 xmlns:converters="clr-namespace:PotenciaRadio.Views.Converters"
+			 xmlns:controls="clr-namespace:PotenciaRadio.Views.Controls"
+			 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+			 xmlns:views="clr-namespace:PotenciaRadio.Views.views">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:InverseBoolConverter x:Key="inverseBoolConverter" />
 
-        </ResourceDictionary>
-    </ContentPage.Resources>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 
-    <StackLayout>
+	<StackLayout>
 
-        <Grid RowSpacing="0"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+		<Grid RowSpacing="0"
+			  HorizontalOptions="FillAndExpand"
+			  VerticalOptions="FillAndExpand">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="5*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
 
-            <controls:GradientColorStack  HorizontalOptions="FillAndExpand"
-                                          VerticalOptions="FillAndExpand"
-                                          StartColor="#feb308"
-                                          EndColor="#ee1d71">
-            </controls:GradientColorStack>
+			<controls:GradientColorStack  HorizontalOptions="FillAndExpand"
+										  VerticalOptions="FillAndExpand"
+										  StartColor="#feb308"
+										  EndColor="#ee1d71">
+			</controls:GradientColorStack>
 
-            <StackLayout HorizontalOptions="FillAndExpand"
-                         VerticalOptions="Center"
-                         Grid.Row="0"
-                         Grid.Column="0">
+			<StackLayout HorizontalOptions="FillAndExpand"
+						 VerticalOptions="Center"
+						 Grid.Row="0"
+						 Grid.Column="0">
 
-                <ffimageloading:CachedImage WidthRequest="300"
-                                            HeightRequest="250"
-                                            Source="{Binding CurrentShow.Show.Image}"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand">
-                </ffimageloading:CachedImage>
-               
-                <views:AdMobView  HorizontalOptions="FillAndExpand" AdUnitId="{Binding AdUnitId}" VerticalOptions="End"  />
-            </StackLayout>
-            <StackLayout Grid.Row="1"
-                         Grid.Column="0"
-                         Orientation="Horizontal"
-                         Padding="20,0"
-                         VerticalOptions="EndAndExpand"
-                         HorizontalOptions="FillAndExpand"
-                         BackgroundColor="{StaticResource DarkColor}">
-                <Image HeightRequest="20"
-                       Source="ic_volume">
-                </Image>
+				<ffimageloading:CachedImage WidthRequest="300"
+											HeightRequest="250"
+											Source="{Binding CurrentShow.Show.Image}"
+											HorizontalOptions="CenterAndExpand"
+											VerticalOptions="CenterAndExpand">
+				</ffimageloading:CachedImage>
 
-                <Slider x:Name="volumeSlider"
-                        Maximum="100"
-                        Minimum="0"
-                        ValueChanged="Slider_ValueChanged"
-                        Value="{Binding Volume}"
-                        HorizontalOptions="FillAndExpand">
-                </Slider>
-                <Grid>
-                    <Image IsVisible="{Binding IsRunning,
+				<!--<views:AdMobView  HorizontalOptions="FillAndExpand" AdUnitId="{Binding AdUnitId}" VerticalOptions="End"  />-->
+			</StackLayout>
+			<StackLayout Grid.Row="1"
+						 Grid.Column="0"
+						 Orientation="Horizontal"
+						 Padding="20,0"
+						 VerticalOptions="EndAndExpand"
+						 HorizontalOptions="FillAndExpand"
+						 BackgroundColor="{StaticResource DarkColor}">
+			
+
+
+				<Grid>
+					<Image IsVisible="{Binding IsRunning,
                     Converter={StaticResource inverseBoolConverter}}"
-                           HeightRequest="40"
-                           Grid.Row="0"
-                           Grid.Column="0"
-                           Source="ic_play">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding PlayCommand}" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Image IsVisible="{Binding IsRunning}"
-                           HeightRequest="40"
-                           Grid.Row="0"
-                           Grid.Column="0"
-                           Source="ic_pause">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding StopCommand}" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                </Grid>
-            </StackLayout>
+						   HeightRequest="40"
+						   Grid.Row="0"
+						   Grid.Column="0"
+						   Source="ic_play">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding PlayCommand}" />
+						</Image.GestureRecognizers>
+					</Image>
+					<Image IsVisible="{Binding IsRunning}"
+						   HeightRequest="40"
+						   Grid.Row="0"
+						   Grid.Column="0"
+						   Source="ic_pause">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding StopCommand}" />
+						</Image.GestureRecognizers>
+					</Image>
+				</Grid>
+			</StackLayout>
 
-        </Grid>
-    </StackLayout> 
+		</Grid>
+	</StackLayout>
 </ContentPage>

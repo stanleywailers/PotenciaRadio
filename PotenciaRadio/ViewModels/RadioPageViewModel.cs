@@ -42,17 +42,6 @@ namespace PotenciaRadio.ViewModels
             }
         }
 
-        private double _volume;
-        public double Volume
-        {
-            get { return _volume; }
-            set
-            {
-                SetProperty(ref _volume, value);
-                Preferences.Set("currentVolume", value);
-            }
-        }
-
         private RootShow _currentShow;
         public RootShow CurrentShow
         {
@@ -60,7 +49,7 @@ namespace PotenciaRadio.ViewModels
             set
             {
                 SetProperty(ref _currentShow, value);
-               
+
             }
         }
         private string _adUnitId;
@@ -71,7 +60,7 @@ namespace PotenciaRadio.ViewModels
         }
 
         public RadioPageViewModel(INavigationService navigationService, IStreaming streaming,
-            IPageDialogService dialogService, IAppService<Settings> radioService,IAppService<RootShow> showService, IEventAggregator eventAggregator)
+            IPageDialogService dialogService, IAppService<Settings> radioService, IAppService<RootShow> showService, IEventAggregator eventAggregator)
               : base(navigationService)
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -87,13 +76,10 @@ namespace PotenciaRadio.ViewModels
             _streaming = streaming;
             PlayCommand = new DelegateCommand(Play);
             StopCommand = new DelegateCommand(Stop);
-            _eventAggregator.GetEvent<StopEvent>().Subscribe(StopStreamEvent);
+            _eventAggregator.GetEvent<StopEvent>().Subscribe(Stop);
         }
 
-        public void StopStreamEvent()
-        {
-            _streaming.SetVolume(00.0);
-        }
+
 
         private async void Play()
         {
@@ -107,11 +93,7 @@ namespace PotenciaRadio.ViewModels
             _streaming.Stop();
         }
 
-        public void SetVolume(double volume)
-        {
-            Volume = _streaming.SetVolume(volume);
 
-        }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -124,27 +106,19 @@ namespace PotenciaRadio.ViewModels
                 {
                     Show = new Show
                     {
-                        Image= "logo_cuadrado.png",
-                         Description ="Potencia Radio"
+                        Image = "logo_cuadrado.png",
+                        Description = "Potencia Radio"
                     }
                 };
             }
 
             Preferences.Set("streamUri", "http://max.miradio.in:8300/stream?type=.mp3");
-          
-           Play();
-            switch (Device.RuntimePlatform)
-            {
-                case Device.Android:
-                    Volume = Preferences.Get("currentVolume", 70.0);
-                    break;
-                case Device.iOS:
-                    Volume = Preferences.Get("currentVolume", 100.0);
-                    break;
-            }
+
+            Play();
+
             IsRunning = Preferences.Get(isRunningKey, false);
 
-            
+
         }
 
     }
